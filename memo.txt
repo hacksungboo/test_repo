@@ -1,0 +1,9 @@
+# python 가상솬경 만들기
+python -m venv venv
+
+# 가상 환경 활성화
+.\venv\Scripts\activate
+
+# 필요한 페키지 설치
+pip install fastapi uvicorn sqlalchemy psycopg2-binary python-jose jinja2 python-multipart
+
