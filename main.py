@@ -54,7 +54,7 @@ def postNewForm(request:Request):
     return templates.TemplateResponse(request=request,name="post/new-form.html")
 
 @app.post("/post/new")
-def postNew(writer: str = Form(...), title: str = Form(...), content: str = Form(...),
+def postNew(request:Request, writer: str = Form(...), title: str = Form(...), content: str = Form(...),
             db: Session = Depends(get_db)):
     # DB 에 저장할 sql 문  준비
     query = text("""
@@ -67,8 +67,14 @@ def postNew(writer: str = Form(...), title: str = Form(...), content: str = Form
     db.commit()
 
     # 특정 경로로 요청을 다시 하도록 리다일렉트 응답을 준다. 
-    return RedirectResponse("/post", status_code=302)
-
+    return templates.TemplateResponse(
+        request=request,
+        name="post/alert.html",
+        context={
+            "msg":"글 정보를 추가 했습니다!",
+            "url":"/post"
+        }
+    )
 @app.get("/post/delete/{num}") # {num} 경로 변수 선언 (path variable)
 def delete(num:int,db:Session=Depends(get_db)): # 경로 변수의 이름과 함수의 매개변수의 이름을 일치시킨다
     # num 에는 삭제할 글의 번호가 들어 있다.
