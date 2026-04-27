@@ -1,0 +1,23 @@
+# [1. Application Engine - Local/Server 통일]
+python==3.11.7              # [확정] 전원 버전 통일 (Docker 이미지 기준)
+fastapi==0.109.0            # 비동기 백엔드 프레임워크
+uvicorn[standard]==0.27.0   # 실행 엔진
+jinja2==3.1.3               # 화면 렌더링 템플릿 엔진
+
+# [2. Database & Connection - Linux DB 연결용]
+postgresql==15              # [Linux 서버 상주] 실제 데이터 저장소 버전
+sqlalchemy==2.0.25          # 파이썬 ORM 표준 (로컬-서버 통신용)
+psycopg2-binary==2.9.9      # PostgreSQL 연결 드라이버
+python-dotenv==1.0.0        # 서버 DB 접속 정보(IP, PW) 관리 필수
+
+# [3. Scheduling & Storage - S3 이관 핵심]
+apscheduler==3.10.4         # [Crontab 대체] Docker 컨테이너 내장형 스케줄러
+boto3==1.34.0               # AWS S3 연동 및 데이터 백업용 공식 라이브러리
+
+# [4. Security & Forms]
+passlib[bcrypt]==1.7.4      # 비밀번호 보안 암호화 (Bcrypt 방식)
+python-multipart==0.0.6     # 로그인 및 폼 데이터 처리
+
+
+
+
